@@ -347,3 +347,6 @@ async def ws_session(ws: WebSocket, session_code: str):
         pass
     finally:
         await manager.disconnect(session_code, ws)
+@app.get("/healthz")
+async def healthz():
+    return {"status": "ok"}
