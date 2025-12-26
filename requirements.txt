@@ -14,3 +14,8 @@ qrcode==8.0
 pillow==11.0.0
 
 greenlet==3.1.1
+
+passlib==1.7.4
+bcrypt==3.2.2
+greenlet==3.1.1
+psycopg[binary]
