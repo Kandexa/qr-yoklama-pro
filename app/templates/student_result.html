@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white rounded-2xl shadow p-6 md:p-8 max-w-lg mx-auto">
+  <h1 class="text-2xl font-semibold">Sonuç</h1>
+  <p class="text-slate-600 mt-1">Oturum: <span class="font-mono">{{ session.session_code }}</span></p>
+
+  <div class="mt-6 rounded-2xl border p-4 {% if status=="late" %}bg-amber-50 border-amber-200{% else %}bg-emerald-50 border-emerald-200{% endif %}">
+    <div class="text-lg font-semibold">
+      {% if status=="late" %}GEÇ{% else %}ZAMANINDA{% endif %}
+    </div>
+    <div class="text-sm text-slate-700 mt-1">Saat: {{ time_local }}</div>
+  </div>
+
+  <div class="mt-6 text-sm">
+    <a class="underline" href="/">Ana sayfa</a>
+  </div>
+</div>
+{% endblock %}

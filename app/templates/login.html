@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white rounded-2xl shadow p-6 md:p-8 max-w-lg mx-auto">
+  <h1 class="text-2xl font-semibold">Giriş</h1>
+  <p class="text-slate-600 mt-1">Kurum hesabınla giriş yap.</p>
+
+  <form method="post" action="/login" class="mt-6 space-y-4">
+    <div>
+      <label class="text-sm text-slate-600">Kullanıcı adı</label>
+      <input name="username" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+    </div>
+    <div>
+      <label class="text-sm text-slate-600">Şifre</label>
+      <input name="password" type="password" required class="mt-1 w-full rounded-xl border px-3 py-2" />
+    </div>
+    <button class="w-full rounded-xl bg-slate-900 text-white py-2 font-medium hover:bg-slate-800">Giriş</button>
+  </form>
+
+  <div class="mt-4 text-xs text-slate-500">
+    Not: Prod ortamda demo kullanıcıları kaldırın / şifreleri değiştirin.
+  </div>
+</div>
+{% endblock %}

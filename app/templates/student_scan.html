@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white rounded-2xl shadow p-6 md:p-8 max-w-lg mx-auto">
+  <h1 class="text-2xl font-semibold">Yoklama</h1>
+  <p class="text-slate-600 mt-1">Oturum: <span class="font-mono">{{ session.session_code }}</span></p>
+
+  {% if session.is_closed %}
+    <div class="mt-6 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-rose-900">
+      Bu oturum kapalı.
+    </div>
+  {% else %}
+    <div class="mt-6 rounded-xl border bg-slate-50 px-4 py-3 text-slate-800">
+      QR anahtarı kısa süreli olduğu için link paylaşımı çoğu zaman çalışmaz.
+    </div>
+
+    {% if not me %}
+      <div class="mt-6">
+        <a href="/login?next={{ next_url }}" class="underline">Giriş yap</a> ve tekrar deneyin.
+      </div>
+    {% else %}
+      <form method="post" action="/s/{{ session.session_code }}/checkin?k={{ k }}" class="mt-6 space-y-3">
+        <button class="w-full rounded-xl bg-slate-900 text-white py-2 font-medium hover:bg-slate-800">Yoklamayı Ver</button>
+        <div class="text-xs text-slate-500">
+          Cihaz kuralı: aynı cihaz bu oturumda başka öğrenci adına check-in yapamaz.
+        </div>
+      </form>
+    {% endif %}
+  {% endif %}
+</div>
+{% endblock %}
